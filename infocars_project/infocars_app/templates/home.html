@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to InfoCarz</title>
+    <style>
+        body {
+            background-image: url("https://wallup.net/wp-content/uploads/2016/03/12/217550-Toyota_Supra-black-car.jpg");
+            background-size: cover;
+            background-color: rgba(243, 241, 241, 0.5);
+        }
+
+        .reveal-text {
+            font-size: 40px; 
+            opacity: 3;
+            animation: reveal 2s ease-in-out forwards;
+            color:rgb(231, 136, 21);
+            font-weight: bold;
+        }
+        
+        @keyframes reveal {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        form {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var sentence = "Feeling lost in the hunt for the right car? Don't worry, we've got your back! Our platform is a haven for car seekers like you. Say goodbye to frustration and hello to a delightful car-shopping experience. Let's match you with your ideal wheels and make those road trip dreams come true!";
+            var words = sentence.split(" ");
+            var container = document.querySelector('.slow-reveal-container');
+
+            words.forEach(function (word, index) {
+                var span = document.createElement('span');
+                span.textContent = word + " ";
+                span.classList.add('reveal-text');
+                span.style.animationDelay = (index * 200) + 'ms';
+                container.appendChild(span);
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1 style="color: rgb(226, 240, 147);"><center>Welcome to InfoCars</center></h1>
+
+    <div class="slow-reveal-container"></div>
+    
+    <form action="{% url 'second_page' %}" method="get" style="position: absolute; bottom: 20px; right: 20px;">
+        <center><input type="submit" value="Let's Go"></center>
+    </form>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Choose an Option</title>
+</head>
+<style>
+body {
+            background-image: url("https://i.pinimg.com/originals/a7/fe/d5/a7fed5b7370f8acf4be6d6482275dcc3.gif");
+            background-size:  cover;
+        }
+        table {
+            color: white;
+            font-weight: bold;
+            margin: auto;
+            border-collapse: collapse;
+        }
+        
+        table td, table th {
+            padding: 10px;
+            border: 1px solid white;
+        }
+        table th {
+            color: rgb(229, 246, 163); /* Set the desired color for the column names */
+        }
+        </style>
+ <form action="{% url 'fpage' %}" method="get">
+    <input type="submit" value="HOME PAGE">
+ </form>
+<body>
+    <center>
+        <h1 style="color: rgb(207, 207, 244);"><center>Choose the range</center></h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <select name="option">
+            <option value="1">5 - 10L</option>
+            <option value="2">10 - 20L</option>
+            <option value="3">20 - 30L</option>
+            <option value="4">30 - 40L</option>
+            <option value="5">40 - 50L</option>
+        </select>
+        <input type="submit" value="Submit">
+    </form>
+    {% if items %}
+    <table>
+        <thead>
+            <tr>
+                {% for column_name in items.0.keys %}
+                <th>{{ column_name }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr>
+                {% for value in item.values %}
+                <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+    
+
+    
+
+    </center>
+    
+</body>
+
+</html>

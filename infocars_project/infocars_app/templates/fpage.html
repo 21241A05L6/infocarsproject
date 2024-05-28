@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ARE YOU READY</title>
+    <style>
+        body {
+            background-image: url("https://www.stugon.com/wp-content/uploads/2013/12/Exotic-Car-Wallpapers-HD-Edition-stugon.com-10.jpg");
+            background-size: cover;
+        }
+
+        .gradient-text {
+            font-size: 100px;
+            background: -webkit-linear-gradient(#e4dc72, #f0ae20);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            opacity: 0;
+            animation: reveal 1s ease-in-out forwards;
+        }
+
+        @keyframes reveal {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        form {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 20px;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var text = document.querySelector('.gradient-text');
+            var letters = text.textContent.split('');
+            text.textContent = '';
+            letters.forEach(function (letter, index) {
+                var span = document.createElement('span');
+                span.textContent = letter;
+                span.style.animationDelay = (index * 100) + 'ms';
+                text.appendChild(span);
+            });
+        });
+    </script>
+</head>
+<body>
+    <center><h1 class="gradient-text">INFOCARZ</h1></center>
+    <form action="{% url 'home' %}" method="get" style="position: absolute; bottom: 20px; right: 20px;">
+        <input type="submit" value="click">
+    </form>
+</body>
+</html>
